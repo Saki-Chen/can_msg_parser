@@ -1,0 +1,417 @@
+{
+    "Frame":
+    [
+        {
+            "id":"0x191",
+            "is_bigendian":false,
+            "signal_list":
+            [
+                {
+                    "key":"vx",
+                    "factor":0.01,
+                    "offset":0,
+                    "start_bit":0,
+                    "length":16,
+                    "is_signed":true
+                },
+                {
+                    "key":"vy",
+                    "factor":0.01,
+                    "offset":0,
+                    "start_bit":16,
+                    "length":16,
+                    "is_signed":true
+                },
+                {
+                    "key":"yaw_rate",
+                    "factor":0.01,
+                    "offset":0,
+                    "start_bit":32,
+                    "length":16,
+                    "is_signed":true
+                }
+            ]
+        },
+        {
+            "id":"0x192",
+            "is_bigendian":false,
+            "signal_list":
+            [
+                {
+                    "key":"x",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":0,
+                    "length":24,
+                    "is_signed":true
+                },
+                {
+                    "key":"y",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":24,
+                    "length":24,
+                    "is_signed":true
+                },
+                {
+                    "key":"yaw",
+                    "factor":0.006,
+                    "offset":0,
+                    "start_bit":48,
+                    "length":16,
+                    "is_signed":true
+                }
+            ]
+        },
+        {
+            "id":"0x193",
+            "is_bigendian":false,
+            "signal_list":
+            [
+                {
+                    "key":"distance",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":0,
+                    "length":32,
+                    "is_signed":false
+                }
+            ]
+        },
+        {
+            "id":"0x194",
+            "is_bigendian":false,
+            "signal_list":
+            [
+                {
+                    "key":"ref_x_outside",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":0,
+                    "length":24,
+                    "is_signed":true
+                },
+                {
+                    "key":"ref_y_outside",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":24,
+                    "length":24,
+                    "is_signed":true
+                },
+                {
+                    "key":"ref_yaw",
+                    "factor":0.006,
+                    "offset":0,
+                    "start_bit":48,
+                    "length":16,
+                    "is_signed":true
+                }
+            ]
+        },
+        {
+            "id":"0x195",
+            "is_bigendian":false,
+            "signal_list":[
+                {
+                    "key":"ref_x_inside",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":0,
+                    "length":24,
+                    "is_signed":true
+                },
+                {
+                    "key":"ref_y_inside",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":24,
+                    "length":24,
+                    "is_signed":true
+                },
+                {
+                    "key":"slot_width",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":48,
+                    "length":16,
+                    "is_signed":false
+                }
+            ]
+        },
+        {
+            "id":"0x196",
+            "is_bigendian":false,
+            "signal_list":
+            [
+                {
+                    "key":"obstacle_x_outside",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":0,
+                    "length":24,
+                    "is_signed":true
+                },                {
+                    "key":"obstacle_y_outside",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":24,
+                    "length":24,
+                    "is_signed":true
+                }
+            ]
+        },
+        {
+            "id":"0x197",
+            "is_bigendian":false,
+            "signal_list":
+            [
+                {
+                    "key":"obstacle_x_inside",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":0,
+                    "length":24,
+                    "is_signed":true
+                },                {
+                    "key":"obstacle_y_inside",
+                    "factor":0.001,
+                    "offset":0,
+                    "start_bit":24,
+                    "length":24,
+                    "is_signed":true
+                }
+            ]
+        },
+        {
+            "id":"0x500",
+            "is_bigendian":false,
+            "signal_list":
+            [
+                {
+                    "key" : "PositionMode",
+                    "factor" : 1,
+                    "offset" : 0,
+                    "start_bit" : 40,
+                    "length" : 8,
+                    "is_signed" : false
+                }
+            ]
+        },
+        {
+            "id": "0x601",
+            "is_bigendian" : false,
+            "signal_list":
+            [
+                {
+                    "key" : "Latitude",
+                    "factor" : 0.0000001,
+                    "offset" : 0,
+                    "start_bit" : 0,
+                    "length" : 32,
+                    "is_signed": true
+                },
+                {
+                    "key" : "Longitude",
+                    "factor" : 0.0000001,
+                    "offset" : 0,
+                    "start_bit" : 32,
+                    "length" : 32,
+                    "is_signed": true
+                }
+            ]
+        },
+        {
+            "id": "0x602",
+            "is_bigendian" : false,
+            "signal_list":
+            [
+                {
+                    "key" : "Altitude",
+                    "factor" : 0.001,
+                    "offset" : 0,
+                    "start_bit" : 0,
+                    "length" : 32,
+                    "is_signed": true
+                }
+            ]
+        },
+        {
+            "id": "0x604",
+            "is_bigendian" : false,
+            "signal_list": 
+            [
+                {
+                    "key" : "Vx",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 0,
+                    "length" : 16,
+                    "is_signed" : true
+                },                {
+                    "key" : "Vy",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 16,
+                    "length" : 16,
+                    "is_signed" : true
+                }
+            ]
+        },
+        {
+            "id": "0x605",
+            "is_bigendian" : false,
+            "signal_list":
+            [
+                {
+                    "key" : "Body_Acc_X",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 0,
+                    "length" : 16,
+                    "is_signed": true
+                },
+                {
+                    "key" : "Body_Acc_Y",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 16,
+                    "length" : 16,
+                    "is_signed": true
+                },
+                {
+                    "key" : "Body_Acc_Z",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 32,
+                    "length" : 16,
+                    "is_signed": true
+                }
+            ]
+        },
+        {
+            "id": "0x607",
+            "is_bigendian" : false,
+            "signal_list":
+            [
+                {
+                    "key" : "Heading",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 0,
+                    "length" : 16,
+                    "is_signed": false
+                },
+                {
+                    "key" : "Pitch",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 16,
+                    "length" : 16,
+                    "is_signed" : true
+                },
+                {
+                    "key" : "Roll",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 32,
+                    "length" : 16,
+                    "is_signed" : true
+                }  
+            ] 
+        },
+        {
+            "id": "0x608",
+            "is_bigendian" : false,
+            "signal_list":
+            [
+                {
+                    "key" : "Body_Angular_X",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 0,
+                    "length" : 16,
+                    "is_signed": true
+                },
+                {
+                    "key" : "Body_Angular_Y",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 16,
+                    "length" : 16,
+                    "is_signed": true
+                },
+                {
+                    "key" : "Body_Angular_Z",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 32,
+                    "length" : 16,
+                    "is_signed": true
+                }
+            ] 
+        },
+        {
+            "id":"0x60c",
+            "is_bigendian":false,
+            "signal_list":
+            [
+                {
+                    "key" : "X",
+                    "factor" : 0.0001,
+                    "offset" : 0,
+                    "start_bit" : 0,
+                    "length" : 32,
+                    "is_signed" : true
+                },
+                {
+                    "key" : "Y",
+                    "factor" : 0.0001,
+                    "offset" : 0,
+                    "start_bit" : 32,
+                    "length" : 32,
+                    "is_signed" : true
+                }
+            ]
+        },
+        {
+            "id":"0x60d",
+            "is_bigendian":false,
+            "signal_list":
+            [
+                {
+                    "key" : "Vx",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 0,
+                    "length" : 16,
+                    "is_signed" : true
+                },
+                {
+                    "key" : "Vy",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 16,
+                    "length" : 16,
+                    "is_signed" : true
+                },
+                {
+                    "key" : "Yaw",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 32,
+                    "length" : 16,
+                    "is_signed" : true
+                },
+                {
+                    "key" : "Track",
+                    "factor" : 0.01,
+                    "offset" : 0,
+                    "start_bit" : 48,
+                    "length" : 16,
+                    "is_signed" : true
+                }
+            ]
+        }
+    ]
+}

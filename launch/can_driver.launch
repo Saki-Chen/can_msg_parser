@@ -1,0 +1,28 @@
+<launch>
+    <arg name="simulation" default="false"/>
+    <!--esdcan or kvaser-->
+    <arg name="can_dev_type" default="esdcan" /> 
+    <arg name="can_dev_1" default="$(find can_msg_parser)/config/can_dev_1.json" />
+    <arg name="can_dev_2" default="$(find can_msg_parser)/config/can_dev_2.json" />
+
+    <param name="use_sim_time" type="bool" value="$(arg simulation)"/>
+ 
+    <include if="$(eval can_dev_type == 'esdcan' and simulation==false)" file="$(find ros_esdcan_bridge)/launch/ros_esdcan_bridge.launch"/>
+    <include if="$(eval can_dev_type == 'kvaser' and simulation==false)" file="$(find kvaser_interface)/launch/kvaser_can_bridge.launch"/>
+
+    <node pkg="can_msg_parser" type="parking_info_parser" name="parking_info_parser" required="true" output="screen" >
+        <param name="meta_can_file_path" type="string" value="$(arg can_dev_1)" />
+        <param name="can_channel" type="string" value="$(arg can_dev_type)_channel_1" />
+    </node>
+
+    <node pkg="can_msg_parser" type="rt3000_msg_parser" name="rt3000_msg_parser" output="screen" required="true">
+        <param name="meta_can_file_path" type="string" value="$(arg can_dev_1)" />
+        <param name="can_channel" type="string" value="$(arg can_dev_type)_channel_1" />
+    </node>
+
+    <node pkg="can_msg_parser" type="chasis_msg_parser" name="chasis_msg_parser" output="screen" required="true">
+        <param name="meta_can_file_path" type="string" value="$(arg can_dev_2)" />
+        <param name="can_channel" type="string" value="$(arg can_dev_type)_channel_2" />
+    </node>
+
+</launch>

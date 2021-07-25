@@ -1,0 +1,105 @@
+{
+    "Frame":
+    [
+        {
+            "id": "0x18b",
+            "is_bigendian" : true,
+            "signal_list":
+            [
+                {
+                    "key" : "steering_angle",
+                    "factor" : 0.1,
+                    "offset" : -3277,
+                    "start_bit" : 8,
+                    "length" : 16,
+                    "is_signed": false
+                }
+            ]
+        },
+        {
+            "id":"0x302",
+            "is_bigendian":true,
+            "signal_list":
+            [
+                {
+                    "key":"motor_speed",
+                    "factor":1,
+                    "offset":-32767,
+                    "start_bit":24,
+                    "length":16,
+                    "is_signed":false
+                },
+                {
+                    "key":"vehicle_speed",
+                    "factor":0.01,
+                    "offset":0,
+                    "start_bit":40,
+                    "length":16,
+                    "is_signed":false
+                }
+            ]
+        },
+        {
+            "id" : "0x303",
+            "is_bigendian" : true,
+            "signal_list" :
+            [
+                {
+                    "key":"brake_pedal_position",
+                    "factor":0.019685,
+                    "offset":0,
+                    "start_bit":8,
+                    "length":8,
+                    "is_signed":false
+                },
+                {
+                    "key":"shift_position",
+                    "factor":1,
+                    "offset":0,
+                    "start_bit":20,
+                    "length":4,
+                    "is_signed":false
+                }
+            ]
+        },
+        {
+            "id":"0x305",
+            "is_bigendian":true,
+            "signal_list":
+            [
+                {
+                    "key":"FL",
+                    "factor":1,
+                    "offset":0,
+                    "start_bit":8,
+                    "length":16,
+                    "is_signed":false  
+                },
+                {
+                    "key":"FR",
+                    "factor":1,
+                    "offset":0,
+                    "start_bit":24,
+                    "length":16,
+                    "is_signed":false
+                },
+                {
+                    "key":"RL",
+                    "factor":1,
+                    "offset":0,
+                    "start_bit":40,
+                    "length":16,
+                    "is_signed":false
+                },
+                {
+                    "key":"RR",
+                    "factor":1,
+                    "offset":0,
+                    "start_bit":56,
+                    "length":16,
+                    "is_signed":false
+                }
+            ]
+        }
+    ]
+}
