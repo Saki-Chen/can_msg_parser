@@ -7,7 +7,7 @@
 #include <apa_msgs/VehicleOdomEst2D.h>
 #include <apa_msgs/SlotInfoStamped.h>
 
-#include <ros_esdcan_bridge/can_io.h>
+#include <ros_esdcan_bridge/can_coder.h>
 #include "bbox.h"
 #include "common_names.h"
 

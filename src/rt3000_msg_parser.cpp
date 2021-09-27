@@ -7,7 +7,7 @@
 #include <sensor_msgs/NavSatFix.h>
 #include <tf/tf.h>
 
-#include <ros_esdcan_bridge/can_io.h>
+#include <ros_esdcan_bridge/can_coder.h>
 #include "common_names.h"
 
 using namespace esdcan;

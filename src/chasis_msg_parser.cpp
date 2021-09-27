@@ -8,7 +8,7 @@
 #include <apa_msgs/WheelEncoderStamped.h>
 #include <apa_msgs/SteeringAngleStamped.h>
 #include <apa_msgs/ChasisSpeedStamped.h>
-#include <ros_esdcan_bridge/can_io.h>
+#include <ros_esdcan_bridge/can_coder.h>
 #include "common_names.h"
 
 using namespace esdcan;
