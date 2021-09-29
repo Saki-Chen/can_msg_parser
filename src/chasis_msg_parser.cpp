@@ -5,6 +5,8 @@
 #include <ros/ros.h>
 #include <can_msgs/Frame.h>
 
+#include <apa_msgs/IntStamped.h>
+#include <apa_msgs/FloatStamped.h>
 #include <apa_msgs/WheelEncoderStamped.h>
 #include <apa_msgs/SteeringAngleStamped.h>
 #include <apa_msgs/ChasisSpeedStamped.h>
@@ -18,7 +20,6 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "chasis_msg_parser");
     ros::NodeHandle nh;
     ros::NodeHandle private_nh("~");
-
     ros::Time::waitForValid();
 
     std::string json_file, can_channel;
@@ -31,18 +32,26 @@ int main(int argc, char **argv)
     const auto &wheeling = all_frame.at(0x305);
     const auto &chasis_speed = all_frame.at(0x302);
     const auto &EPS = all_frame.at(0x18b);
+    const auto &frame_0x191 = all_frame.at(0x191);
+    const auto &frame_0x303 = all_frame.at(0x303);
 
     apa_msgs::SteeringAngleStamped steering_status;
     apa_msgs::WheelEncoderStamped wheel_status;
     apa_msgs::ChasisSpeedStamped speed_status;
+    apa_msgs::IntStamped shift_poistion;
+    apa_msgs::FloatStamped brake_pedal_position;
+    apa_msgs::IntStamped time_enable;
 
-    steering_status.header.frame_id = wheel_status.header.frame_id = speed_status.header.frame_id = chasis_frame_id;
+    steering_status.header.frame_id = wheel_status.header.frame_id = speed_status.header.frame_id = shift_poistion.header.frame_id = brake_pedal_position.header.frame_id = time_enable.header.frame_id = chasis_frame_id;
 
-    ros::Publisher pub_wheeling, pub_steering, pub_speed;
+    ros::Publisher pub_wheeling, pub_steering, pub_speed, pub_shift, pub_brake, pub_enable;
 
     pub_wheeling = nh.advertise<apa_msgs::WheelEncoderStamped>(topic_wheeling_count, 3);
     pub_steering = nh.advertise<apa_msgs::SteeringAngleStamped>(topic_steering_angle, 3);
     pub_speed = nh.advertise<apa_msgs::ChasisSpeedStamped>(topic_chasis_speed, 3);
+    pub_shift = nh.advertise<apa_msgs::IntStamped>(topic_shift_position, 3);
+    pub_brake = nh.advertise<apa_msgs::FloatStamped>(topic_brake_pedal_position, 3);
+    pub_enable = nh.advertise<apa_msgs::IntStamped>(topic_time_enable, 3);
 
     const auto &sig_FL = wheeling.signal_list.at("FL");
     const auto &sig_RL = wheeling.signal_list.at("RL");
@@ -51,8 +60,12 @@ int main(int argc, char **argv)
     const auto &sig_motor_speed = chasis_speed.signal_list.at("motor_speed");
     const auto &sig_vehicle_speed = chasis_speed.signal_list.at("vehicle_speed");
     const auto &sig_steering_angle = EPS.signal_list.at("steering_angle");
+    const auto &sig_shift = frame_0x303.signal_list.at("shift_position");
+    const auto &sig_brake = frame_0x303.signal_list.at("brake_pedal_position");
+    const auto &sig_enable = frame_0x191.signal_list.at("time_enable");  
 
     FrameDecoder decoder(true);
+    FrameDecoder decoder2(false);
 
     std::function<void(const can_msgs::FrameConstPtr &msg)> callback = [&](const can_msgs::FrameConstPtr &msg) {
         // std::cout << *msg;
@@ -87,6 +100,25 @@ int main(int argc, char **argv)
             steering_status.angle = angle;
             steering_status.header.stamp = msg->header.stamp;
             pub_steering.publish(steering_status);
+        }
+        else if (msg->id == frame_0x303.id)
+        {
+            double value;
+            decoder.decode(msg->data.data(), sig_shift, value);
+            shift_poistion.value = value;
+            decoder.decode(msg->data.data(), sig_brake, value);
+            brake_pedal_position.value = value;
+            shift_poistion.header.stamp = brake_pedal_position.header.stamp = msg->header.stamp;
+            pub_shift.publish(shift_poistion);
+            pub_brake.publish(brake_pedal_position);
+        }
+        else if (msg->id == frame_0x191.id)
+        {
+            double value;
+            decoder2.decode(msg->data.data(), sig_enable, value);
+            time_enable.value = value;
+            time_enable.header.stamp = msg->header.stamp;
+            pub_enable.publish(time_enable);
         }
     };
 

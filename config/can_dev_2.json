@@ -2,6 +2,21 @@
     "Frame":
     [
         {
+            "id": "0x191",
+            "is_bigendian" : false,
+            "signal_list":
+            [
+                {
+                    "key" : "time_enable",
+                    "factor" : 1,
+                    "offset" : 0,
+                    "start_bit" : 0,
+                    "length" : 1,
+                    "is_signed": false
+                }
+            ]
+        },
+        {
             "id": "0x18b",
             "is_bigendian" : true,
             "signal_list":
